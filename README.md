@@ -17,7 +17,7 @@ Internet was the body of protocols that specify how communication takes place.
 The generally accepted roadmap for communication has been the ISO seven 
 level chart. The lower levels describe how data moves from place to place 
 physically, and at each successively higher level it deals with how data is 
-transformed logically transformed for use in specific contexts.
+transformed logically for use in specific contexts.
 
 One fundamental concept is that of the "datagram". Kind of like a postcard 
 containing one discrete parcel of data. In the TCP/IP suite, we call this a 
