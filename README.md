@@ -121,10 +121,16 @@ See https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers
 
 <h3>Sun Microsystems issued me ONC/RPC Program numbers</h3>
 Sun MicrosystemsSun Microsystems Credential ID 300364
+See: https://www.rfc-editor.org/rfc/pdfrfc/rfc5531.txt.pdf
 
 <h3> TCP/IP Ports Assigments for the Virtual Protocol Adapter</h3>
 <p>I applied for and received official TCP/IP ports assignments for TCP and 
 UDP.
+<pre>
+Service Name 	Port Number 	Transport Protocol 	Description 	
+vpa 	        5164 	        tcp 	            Virtual Protocol Adapter 	
+vpa-disc 	    5164        	udp 	            VPA Discovery
+</pre>
 
 <pre>
 /etc/services:
