@@ -67,7 +67,8 @@ detail, and he actually engineered a NetBEUI over TCP/IP solution.
 
 This was my first non-trivial experience with what I now refer to as Protocol 
 Adapters. In this case though, it was a specific pseudo-proprietary protocol 
-associated with IBM & Microsoft.
+associated with IBM & Microsoft. It was followed by several successful 
+projects for commerical clients.
 </p>
 
 <h2>Cubix Proxy Agent Webserver</h2>
@@ -95,3 +96,38 @@ license did allow for a plug-in. I wrote an interface that adapted the
 ROMBIOS RS-232 calls to a locally installed LAN card. The solution was very 
 successful and was used widely by faculty and students.
 </p>
+
+<h2>Thoughts about the future of Protocol Adaptation...</h2>
+<p>
+All these experiences got me thinking about a more generalized approach to 
+protocol adaptation. I think that the future of protocol adaptation will 
+be based on the concept of a "Virtual Protocol Adapter". A Virtual Protocol 
+Adapter is a protocol adapter designed to be dynamically adaptable for 
+multiple protocols.
+</p>
+
+<p>
+While thinking about what this would be like, I also considered that it 
+should be vendor neutral. Remembering my commitment to open source software, 
+I wanted to focus on standards-based technologies, utilizing open source 
+operating systems and open source language tools. I have been thinking 
+about this problem for about thirty years. During that time, I collected the 
+interfaces that would be helpful. 
+
+<h3>Simple Network Management Protocol - Private Enterprise Number</h3>
+<p>I applied for a received a Private Enterprise Number (204) from the 
+Assigned Numbers.
+See https://www.iana.org/assignments/enterprise-numbers/enterprise-numbers
+
+<h3>Sun Microsystems issued me ONC/RPC Program numbers</h3>
+Sun MicrosystemsSun Microsystems Credential ID 300364
+
+<h3> TCP/IP Ports Assigments for the Virtual Protocol Adapter</h3>
+<p>I applied for and received official TCP/IP ports assignments for TCP and 
+UDP.
+
+<pre>
+/etc/services:
+vpa		    5164/tcp
+vpa-disc	5164/udp
+</pre>
