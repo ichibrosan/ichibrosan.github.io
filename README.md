@@ -68,5 +68,30 @@ detail, and he actually engineered a NetBEUI over TCP/IP solution.
 This was my first non-trivial experience with what I now refer to as Protocol 
 Adapters. In this case though, it was a specific pseudo-proprietary protocol 
 associated with IBM & Microsoft.
+</p>
 
+<h2>Cubix Proxy Agent Webserver</h2>
+<p>In the 1990's There were several companies that were selling remote 
+access servers. These servers were often a pack full of single card 
+computers running software such as PCAnywhere. One such company was Cubix, 
+who had a very nicely engineered line of remote access server clusters. 
+Their equipment was SNMP manageable, but the management software was usually 
+costly. They retained me to write what I called a Proxy Agent Webserver.  
+The proxy agent webserver was a small FreeBSD system with an Apache web 
+server  and a collection of c++ CGI scripts that I wrote that allowed a web  
+browser to interrogate their proprietary MIBs. The CGI scripts were written  
+in C++ using the SNMP++ toolkit. I would call this an HTML to SNMP protocol  
+adapter.
+</p>
+
+<h2>Stanford University IDX Ethernet Interface</h2>
+<p>
+Another protocol adapter I wrote was for Stanford University's IDX 
+terminal emulator software. The Universite had a site license for the 
+IDX terminal emulator interfaces with serial ports. But the universite 
+had just rolled out Ethernet and didn't want to buy a new very costly site 
+license for the Ethernet version of the terminal emulator. The existing 
+license did allow for a plug-in. I wrote an interface that adapted the 
+ROMBIOS RS-232 calls to a locally installed LAN card. The solution was very 
+successful and was used widely by faculty and students.
 </p>
