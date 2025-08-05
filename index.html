@@ -14,7 +14,102 @@
     to work with the Virtual Protocol Adapter and Multiware Framework.
 </h2>
 
-<!--#include file="filename.html" -->
+<hr>
+
+<h1>
+    Introduction to the Virtual Protocol Adapter and FrameWork
+</h1>
+
+<h2>
+    Description
+</h2>
+
+<h3>
+    The Virtual Protocol Adapter and Multiware Framework is a long-term project undertaken
+    by Douglas Goodall.
+
+    <h4>
+        Virtual Protocol Adapter
+        <p>
+            The Virtual Protocol Adapter is a software component that acts as a bridge between
+            disparate hardware and software. It is designed to provide a straightforward set
+            of interfaces that may be used by to communicate with other hardware and software
+            components.
+        </p>
+
+        <p> As the Virtual Protocol Adapter is an application program written in C++ and designed
+            to run on the Linux operating system, the VPA and it's utilities may call any API's
+            normally available to a Linux application as well as those supplied by additional libraries,
+            dynamic, or static.
+
+            In addition to the regular C library, the VPA accesses several commonly used libraries, those being
+            pthread, and cgicc and uuid.
+
+            The VPA also makes heavy use of the Goodall Multiware Framework, a library comprised of many
+            classes that provide additional functionality that the VPA required to fulfill its design.
+        </p>
+
+        <p>
+            <ul>
+                <li>cfgini.cpp - Provides configuration file services</li>
+                <li>cgihtml.cpp - Provides functions to generate HTML dynamically</li>
+                <li>cliLogin.cpp - Provides command-line authentication functions</li>
+                <li>CLog.cpp - Provides flexible logging support</li>
+                <li>crtbind.cpp - Provides ASCII ANSI Escape Sequence support </li>
+                <li>dashboard.cpp - Provides dashboard generation for HTML sessions</li>
+                <li>environment.cpp - Provides routines that detect the hardware/software configuration</li>
+                <li>iHex.cpp - Provides functions to generate Intel hex format files</li>
+                <li>login.cpp - source code of login CGI script component of VPA</li>
+                <li>logout.cpp - source code of logout CGI script component of VPA</li>
+                <li>look.cpp - source code of look extrinbsic utility program</li>
+                <li>mutations.cpp - source code of mutex support functions for shared variables</li>
+                <li>mwfw2.cpp - source code of Multiware Framework class</li>
+                <li>osIface.cpp - source code for path interface functions</li>
+                <li>password.cpp - source code of authentication functions</li>
+                <li>prefs.cpp - source code of preferences handler</li>
+                <li>prefs-action.cpp - source code of target CGI for preferences form</li>
+                <li>RTkGPIO.cpp - source code for interface to RTkGPIO USB hardware</li>
+                <li>queryremote.cpp - source code of VPARPC client program</li>
+                <li>readCSV.cpp - source code for CSV import functions</li>
+                <li>render.cpp - source code for generic schema form client</li>
+                <li>schema.cpp - source code of schema based HTML form generator</li>
+                <li>schemacompiler.cpp - source code for schema to c++ convertor</li>
+                <li>semigraphics.cpp - source code for semigraphics support</li>
+                <li>shared.cpp - source code to handle System V shared memory regions</li>
+                <li>vparpc.cpp - source code of homegrown RPC function library</li>
+                <li>vparpc_client.cpp - source code for RPC client extrinsic program</li>
+                <li>vparpc_inetd_server.cpp - source code of xinetd invokable RPC server</li>
+                <li>vparpc_server.cpp - source code of RPC server extrinsic program</li>
+                <li>vpautil.cpp - source code of sample vpa  utility program</li>
+                <li>window.cpp - source code of window manager for semigraphics</li>
+                <li>xinetdcfg.cpp - source code of xinetd configurator program</li>
+                <li>xinetdctl.cpp - source code of xinetd control program</li>
+             </ul>
+        </p>
+
+
+
+        <p> For example, the VPA has access to the System V Shared Memory services that are supplied in Linux.
+            This shared memory region contains a variety of variables and data structures that provide for the
+            control and status of the VPA and it's associated components.
+        </p>
+
+        <p> It is the "CSysLog" that provides the member functions to write messages into the system logs.
+        </p>
+
+
+        <p> It is the "shared" C++ class that provides the member functions that may be used to establish
+            addressability to the shared region. The structure definition for this shared memory region is
+            called shmemng.h. This structure contains a variety of variables that aid in the construction
+            of well-formed function request packets used with the Remote Procedure Call feature.
+        </p>
+
+        </p>
+    </h4>
+</h3>
+
+
+
 
 
 <!--<table border=1>-->
