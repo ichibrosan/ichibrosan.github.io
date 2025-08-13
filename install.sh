@@ -7,4 +7,4 @@ echo "  std::cout << std::endl"                  >> install.cpp
 echo "}"                                         >> install.cpp
 gcc install.cpp -o install
 ./install
-rm install.cpp install
+#rm install.cpp install
