@@ -6,4 +6,4 @@ echo "  printf(\"%s\n\",__PRETTY_FUNCTION__);"    >> install.cpp
 echo "}"                                         >> install.cpp
 gcc install.cpp -o install
 ./install
-rm install.cpp install
+#rm install.cpp install
