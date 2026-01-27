@@ -1,12 +1,463 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Goodall Multiware Engineering</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Douglas Goodall | Software Engineer</title>
+  <style>
+    :root {
+      --bg: #08121f;
+      --bg-2: #0e1d33;
+      --ink: #e6f0ff;
+      --muted: #9bb3d1;
+      --accent-1: #37f2e2;
+      --accent-2: #ff7a59;
+      --accent-3: #7aff7a;
+      --accent-4: #ffd65a;
+      --glass: rgba(18, 32, 54, 0.68);
+      --stroke: rgba(95, 170, 255, 0.25);
+      --shadow: 0 24px 80px rgba(1, 6, 15, 0.55);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Space Grotesk", "Rajdhani", "IBM Plex Sans", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(1200px 700px at 10% 10%, #13233f 0%, var(--bg) 55%, #050b16 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.25;
+      background-image:
+        linear-gradient(transparent 96%, rgba(55, 242, 226, 0.3) 100%),
+        linear-gradient(90deg, transparent 96%, rgba(55, 242, 226, 0.25) 100%);
+      background-size: 60px 60px;
+      mix-blend-mode: screen;
+      z-index: 0;
+    }
+
+    .glow-shape {
+      position: absolute;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      filter: blur(40px);
+      opacity: 0.45;
+      background: radial-gradient(circle at 30% 30%, rgba(55, 242, 226, 0.7), rgba(55, 242, 226, 0));
+      z-index: 0;
+    }
+
+    .glow-shape.orange {
+      background: radial-gradient(circle at 40% 40%, rgba(255, 122, 89, 0.7), rgba(255, 122, 89, 0));
+    }
+
+    header {
+      position: relative;
+      z-index: 1;
+      padding: 80px 8vw 40px;
+    }
+
+    .hero {
+      display: grid;
+      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(55, 242, 226, 0.12);
+      border: 1px solid rgba(55, 242, 226, 0.4);
+      color: var(--accent-1);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.7rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 5vw, 4.2rem);
+      margin: 18px 0 12px;
+      line-height: 1.05;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .btn {
+      border: 1px solid transparent;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      color: var(--bg);
+      background: linear-gradient(120deg, var(--accent-1), var(--accent-4));
+      box-shadow: 0 12px 24px rgba(55, 242, 226, 0.3);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn.secondary {
+      background: transparent;
+      color: var(--ink);
+      border-color: rgba(255, 122, 89, 0.6);
+      box-shadow: none;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px rgba(55, 242, 226, 0.4);
+    }
+
+    main {
+      position: relative;
+      z-index: 1;
+      padding: 0 8vw 80px;
+    }
+
+    .section {
+      margin: 48px 0;
+    }
+
+    .section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section h2 span {
+      width: 14px;
+      height: 14px;
+      border-radius: 4px;
+      background: linear-gradient(120deg, var(--accent-2), var(--accent-1));
+      box-shadow: 0 0 12px rgba(255, 122, 89, 0.6);
+    }
+
+    .card-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+
+    .glass {
+      background: var(--glass);
+      border: 1px solid var(--stroke);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat {
+      display: grid;
+      gap: 6px;
+      font-family: "IBM Plex Mono", "Fira Code", monospace;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    .stat strong {
+      font-size: 1.8rem;
+      color: var(--accent-3);
+      letter-spacing: 0.02em;
+    }
+
+    .pill-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .pill {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(155, 179, 209, 0.25);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 18px;
+    }
+
+    .timeline-item {
+      display: grid;
+      gap: 10px;
+    }
+
+    .role {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--muted);
+    }
+
+    .highlights {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    .scanline {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(transparent, rgba(55, 242, 226, 0.1), transparent);
+      animation: scan 6s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes scan {
+      0% { transform: translateY(-100%); }
+      100% { transform: translateY(100%); }
+    }
+
+    .fade-in {
+      animation: fade 1s ease both;
+    }
+
+    @keyframes fade {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      padding: 40px 8vw 70px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-card {
+      display: grid;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(55, 242, 226, 0.6), transparent);
+      margin: 30px 0;
+    }
+
+    @media (max-width: 720px) {
+      header {
+        padding-top: 60px;
+      }
+
+      .cta-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
 </head>
 <body>
-<h1>Welcome to Goodall Multiware Engineering</h1>
+  <div class="grid-overlay"></div>
+  <div class="glow-shape" style="top: -120px; left: -80px;"></div>
+  <div class="glow-shape orange" style="bottom: -180px; right: -120px;"></div>
 
+  <header>
+    <div class="hero">
+      <div class="fade-in">
+        <span class="badge">Software Engineer • Consultant</span>
+        <h1>Douglas Goodall</h1>
+        <p>Seasoned engineer with 40+ years delivering embedded, firmware, and systems software. Builds high-performance, reliable solutions across C++, Python, Linux, and hardware-adjacent platforms.</p>
+        <div class="cta-row">
+          <a class="btn" href="mailto:doug@goodall.com">doug@goodall.com</a>
+          <a class="btn secondary" href="https://www.linkedin.com/in/douglasgoodall">LinkedIn</a>
+        </div>
+      </div>
+      <div class="glass fade-in" style="position: relative; overflow: hidden;">
+        <div class="scanline"></div>
+        <div class="stat">
+          <strong>Santa Maria, CA</strong>
+          Based in the Central Coast
+        </div>
+        <div class="stat">
+          <strong>40+ Years</strong>
+          Software Engineering Depth
+        </div>
+        <div class="stat">
+          <strong>Embedded + Systems</strong>
+          Firmware, IPC, Drivers, Networking
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <h2><span></span>Profile Snapshot</h2>
+      <div class="card-grid">
+        <div class="glass">
+          <p>Versatile consultant with deep experience in C++, Python, Linux, firmware, and embedded systems. Known for tackling gnarly technical challenges and delivering reliable, high-performance solutions.</p>
+        </div>
+        <div class="glass">
+          <p>Recent focus includes embedded navigation systems, compliance test automation, interrupt service routines at extreme data rates, and modernizing legacy platforms.</p>
+        </div>
+        <div class="glass">
+          <p>Open-source minded, preference for LibreOffice and practical tooling. Consistently invests in learning, from iOS/macOS to AWS and CI/CD.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span></span>Technical Edge</h2>
+      <div class="glass">
+        <div class="pill-group">
+          <span class="pill">C++</span>
+          <span class="pill">Python</span>
+          <span class="pill">Embedded Linux</span>
+          <span class="pill">Firmware</span>
+          <span class="pill">IPC &amp; Shared Memory</span>
+          <span class="pill">XML-RPC</span>
+          <span class="pill">Sockets &amp; Networking</span>
+          <span class="pill">Jenkins / CI</span>
+          <span class="pill">Driver Development</span>
+          <span class="pill">Hardware Integration</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span></span>Recent Experience</h2>
+      <div class="timeline">
+        <div class="glass timeline-item">
+          <div class="role">WhiteFox Defense Technologies, Inc. — Contract Software Engineer</div>
+          <div class="meta">April 2024 – May 2024 · Santa Maria, CA</div>
+          <ul class="highlights">
+            <li>Documented flagship product code and authored an OpenAPI 3.0 specification.</li>
+            <li>Contributed to product clarity and long-term maintainability.</li>
+          </ul>
+        </div>
+        <div class="glass timeline-item">
+          <div class="role">International Emergency Services — Lead Information Technology Analyst</div>
+          <div class="meta">December 2023 – April 2024 · Santa Maria, CA</div>
+          <ul class="highlights">
+            <li>Designed an alternative news website for Santa Maria Airport.</li>
+            <li>Used relational databases to extract political candidate data.</li>
+          </ul>
+        </div>
+        <div class="glass timeline-item">
+          <div class="role">Anello Photonics — Senior Software Engineering Consultant</div>
+          <div class="meta">January 2023 – June 2023 · Santa Clara, CA</div>
+          <ul class="highlights">
+            <li>Enhanced interrupt service routines for 921,600 Baud serial channels.</li>
+            <li>Set up Jenkins compliance testing and evaluated coding standards tooling.</li>
+            <li>Delivered a new state-machine ISR for extreme data rate reliability.</li>
+          </ul>
+        </div>
+        <div class="glass timeline-item">
+          <div class="role">RMD Systems — Lead Software Engineer</div>
+          <div class="meta">April 2020 – January 2022 · Nipomo, CA</div>
+          <ul class="highlights">
+            <li>Authored the complete control software for a multi-legged vehicle platform.</li>
+            <li>Architected IPC with XMLRPC, shared memory, and socket-based networking.</li>
+            <li>Built GECORE, an adaptable autonomy framework for legged robotics.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span></span>Extended Career Highlights</h2>
+      <div class="card-grid">
+        <div class="glass">
+          <div class="role">WhiteFox Defense — Senior Firmware Engineer</div>
+          <div class="meta">June 2019 – April 2020</div>
+          <p>Embedded Linux, Arduino/Raspberry Pi, RF systems, and software process improvements.</p>
+        </div>
+        <div class="glass">
+          <div class="role">Goodall Software Engineering — Principal Engineer</div>
+          <div class="meta">1989 – 2006</div>
+          <p>Contract engineering for Stanford, Motorola, Cubix, and others. Built comms drivers and Unix ports.</p>
+        </div>
+        <div class="glass">
+          <div class="role">Digital Research — Senior OS Specialist</div>
+          <div class="meta">1983 – 1985</div>
+          <p>Ported Concurrent CP/M and DOS platforms and delivered worldwide OEM troubleshooting.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span></span>Certifications &amp; Recognition</h2>
+      <div class="glass">
+        <div class="pill-group">
+          <span class="pill">Advanced Data Packet Analysis</span>
+          <span class="pill">SMI Network Management Private Enterprise Code</span>
+          <span class="pill">C++ Best Practices for Developers</span>
+          <span class="pill">Software Design: Developing Effective Requirements</span>
+          <span class="pill">Well Known TCP/IP Port Numbers</span>
+          <span class="pill">2019 WhiteFox Defense “Strongest Coffee Award”</span>
+          <span class="pill">Key Employee Stock Option Grant</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2><span></span>Education</h2>
+      <div class="card-grid">
+        <div class="glass">
+          <div class="role">IBM Finance Industry Training Center</div>
+          <div class="meta">Certificate of Training · 1979</div>
+        </div>
+        <div class="glass">
+          <div class="role">Christian Living Bible Institute</div>
+          <div class="meta">Ordination · 2008 – 2009</div>
+        </div>
+        <div class="glass">
+          <div class="role">Pierce Junior College</div>
+          <div class="meta">Assembly Language Programming · 1976 – 1977</div>
+        </div>
+        <div class="glass">
+          <div class="role">Udemy</div>
+          <div class="meta">Certificates, various technical subjects · 2013 – 2019</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="divider"></div>
+    <div class="glass contact-card">
+      <div><strong>Contact</strong></div>
+      <div>425 San Juanico, Santa Maria, CA 93455</div>
+      <div>1-805-598-9099</div>
+      <div>doug@goodall.com</div>
+      <div>linkedin.com/in/douglasgoodall</div>
+    </div>
+  </footer>
 </body>
 </html>
